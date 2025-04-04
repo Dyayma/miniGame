@@ -7,10 +7,20 @@ public class LittleGame {
     
     System.out.print("Enter character name: ");
     String name = scanner.nextLine();
-    
+
+    String classType;
+    while (true){
     System.out.print("Enter class type (Warrior/Mage/Archer): ");
-    String classType = scanner.nextLine();
-    
+    classType = scanner.nextLine();
+    if (classType.equalsIgnoreCase("Warrior")||
+        classType.equalsIgnoreCase("Mage")||
+        classType.equalsIgnoreCase("Archer")){
+        break; }
+    else{
+        System.out.println("Invalid Class Type. Please enter Warrior, Mage,or Archer only!");
+    }
+    }
+ 
     System.out.print("Enter Initial Level: ");
     int level = scanner.nextInt();
     scanner.nextLine();
@@ -18,24 +28,21 @@ public class LittleGame {
     Character player = new Character( name, classType, level);
     
     player.displayInfo();
- 
+
     System.out.print("Do you want to level up? (yes/no):");
     String levelUpChoice = scanner.nextLine();
     if (levelUpChoice.equalsIgnoreCase("yes")){
         player.levelUp();
         player.displayUpdatedInfo();
+    }else if (levelUpChoice.equalsIgnoreCase("no"))
+        System.out.println("Your level remains");
+        player.displayInfo();
     }
-    }
+}
 }
 
 
 
-package com.mycompany.littlegame;
-
-/**
- *
- * @author NUD-Student
- */
 public class Character {
     
     private String name;
